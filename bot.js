@@ -6,7 +6,7 @@ const botConfig = {
     host: 'localhost', // Zmień na IP serwera, jeśli jest inny
     port: 25565, // Zmień na port serwera, jeśli jest inny
     username: 'GGracz355',
-    version: '1.12.2' // Wersja 1.12.2
+    version: '1.21' // Wersja 1.12.2
 };
 
 let registered = false;
@@ -129,3 +129,4 @@ async function moveDirection(bot, distance, direction) {
 
 // Start the bot
 createBot();
+
