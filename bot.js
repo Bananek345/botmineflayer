@@ -3,8 +3,8 @@ const Vec3 = require('vec3');
 
 // Bot configuration
 const botConfig = {
-    host: 'localhost', // Zmień na IP serwera, jeśli jest inny
-    port: 25565, // Zmień na port serwera, jeśli jest inny
+    host: 'Burgeer.aternos.me', // Zmień na IP serwera, jeśli jest inny
+    port: 38746, // Zmień na port serwera, jeśli jest inny
     username: 'GGracz355',
     version: '1.21' // Wersja 1.12.2
 };
@@ -129,4 +129,5 @@ async function moveDirection(bot, distance, direction) {
 
 // Start the bot
 createBot();
+
 
