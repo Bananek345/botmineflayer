@@ -3,7 +3,7 @@ const http = require('http');
 
 const options = {
   host: 'paintballmc.falixsrv.me',
-  port: 18013,
+  port: 38839,
   username: 'ProBot',
   version: '1.20.5'
 };
@@ -42,3 +42,4 @@ const server = http.createServer((req, res) => {
 server.listen(port, () => {
   console.log(`Serwer HTTP działa na porcie ${port}`);
 });
+
