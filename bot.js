@@ -1,20 +1,32 @@
 const mineflayer = require('mineflayer');
 
-const bot = mineflayer.createBot({
+const options = {
   host: 'paintballmc.falixsrv.me',
   port: 38839,
   username: 'ProBot',
   version: '1.20.5'
-});
+};
 
-bot.on('spawn', () => {
-  console.log('Bot się połączył i pojawił na serwerze!');
-});
+let bot;
 
-bot.on('chat', (username, message) => {
-  if (username === bot.username) return;
-  console.log(`<${username}> ${message}`);
-});
+function createBot() {
+  bot = mineflayer.createBot(options);
 
-bot.on('error', err => console.log('Błąd:', err));
-bot.on('end', () => console.log('Bot został rozłączony'));
+  bot.on('spawn', () => {
+    console.log('Bot się połączył i pojawił na serwerze!');
+  });
+
+  bot.on('chat', (username, message) => {
+    if (username === bot.username) return;
+    console.log(`<${username}> ${message}`);
+  });
+
+  bot.on('error', err => console.log('Błąd:', err));
+
+  bot.on('end', () => {
+    console.log('Bot został rozłączony. Próba ponownego połączenia za 5 sekund...');
+    setTimeout(createBot, 5000); // ponowne połączenie po 5 sekundach
+  });
+}
+
+createBot();
