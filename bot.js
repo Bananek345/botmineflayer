@@ -1,6 +1,11 @@
 const mineflayer = require('mineflayer');
+const express = require('express');
 
-const bot = mineflayer.createBot({
+const app = express();
+const port = process.env.PORT || 10000; // Render domyślnie używa portu 10000
+
+// Tworzenie bota Mineflayer
+let bot = mineflayer.createBot({
   host: 'paintballmc.falixsrv.me',
   port: 38839,
   username: 'ProBot',
@@ -30,4 +35,14 @@ bot.on('end', () => {
       auth: 'offline'
     });
   }, 5000);
+});
+
+// Prosty endpoint HTTP, aby Render wykrył otwarty port
+app.get('/', (req, res) => {
+  res.send('Bot Mineflayer działa poprawnie!');
+});
+
+// Nasłuchiwanie na porcie zdefiniowanym przez Render
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Serwer HTTP działa na porcie ${port}`);
 });
