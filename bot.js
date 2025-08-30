@@ -1,8 +1,9 @@
 const mineflayer = require('mineflayer');
+const http = require('http');
 
 const options = {
   host: 'paintballmc.falixsrv.me',
-  port: 38839,
+  port: 18013,
   username: 'ProBot',
   version: '1.20.5'
 };
@@ -25,8 +26,19 @@ function createBot() {
 
   bot.on('end', () => {
     console.log('Bot został rozłączony. Próba ponownego połączenia za 5 sekund...');
-    setTimeout(createBot, 5000); // ponowne połączenie po 5 sekundach
+    setTimeout(createBot, 5000);
   });
 }
 
 createBot();
+
+const port = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('Bot działa\n');
+});
+
+server.listen(port, () => {
+  console.log(`Serwer HTTP działa na porcie ${port}`);
+});
